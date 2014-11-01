@@ -10,10 +10,23 @@ html(lang='en')
 
 	body
 		.container
-			h1 River of Life
+			h1 Raine's River of Life
+			h2 Unselfconsciousness from birth until death
 			#chart(style='height:250px;')
 
+		script#hover-label(type='x-handlebars-template')
+			p.hover-label-title {{title}}
+			p.hover-label-age
+				b Age: 
+				| {{age}}
+			p.hover-label-value
+				b Unselfconsciousness: 
+				| {{value}}
+			p.hover-label-desc {{description}}
+
 		script(src='//code.jquery.com/jquery-2.1.1.min.js')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js')
 		script(src='//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')
 		script(src='//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js')
 		script(src='/scripts/main.min.js')
