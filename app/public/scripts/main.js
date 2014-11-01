@@ -1,5 +1,5 @@
 (function() {
-  var add, birthYear, data, intoString, mapOverKey, setValue, spy, tap, templateHoverLabel;
+  var add, addTwo, birthYear, data, intoString, mapOverKey, setValue, spy, tap, templateHoverLabel;
 
   birthYear = 1985;
 
@@ -32,8 +32,12 @@
     }
   ];
 
-  add = function(x, y) {
+  addTwo = function(x, y) {
     return x + y;
+  };
+
+  add = function() {
+    return [].reduce.call(arguments, addTwo);
   };
 
   intoString = function(value) {

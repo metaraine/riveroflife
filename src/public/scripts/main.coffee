@@ -34,26 +34,33 @@ data = [
 	}
 ]
 
-add = (x,y)-> x + y
+# Adds two numbers together
+addTwo = (x,y)-> x + y
 
-# converts the given to a string by calling its toString method
+# Adds the given arguments together
+add = ()->
+	[].reduce.call arguments,addTwo
+
+# Converts the given to a string by calling its toString method
 intoString = (value)-> value.toString()
 
-# creates a clone of the given object with the given key set to a new value
+# Creates a clone of the given object with the given key set to a new value
 setValue = (o, key, value)->
 	newObject = _.clone o
 	newObject[key] = value
 	newObject
 
-# creates a mapping function that applies the given function to the value of the specific key when mapping over objects
+# Creates a mapping function that applies the given function to the value of the specific key when mapping over objects
 mapOverKey = (f, originalKey, newKey)->
 	(o)->
 		setValue(o, newKey or originalKey, f(o[originalKey]))
 
+# Invokes a function on an object and returns the object (for chaining purposes)
 tap = (f, o)->
 	f(o)
 	o
 
+# console.log's the given object and returns the object (for chaining purposes)
 spy = _.partial tap, console.log.bind(console)
 
 templateHoverLabel = Handlebars.compile $('#hover-label').html()
@@ -63,7 +70,6 @@ new Morris.Line
 	data: data
 	.map mapOverKey _.partial(add, birthYear), 'age', 'year'
 	.map mapOverKey intoString, 'year'
-	# .map spy
 	xkey: 'year'
 	ykeys: ['value']
 	labels: ['Unselfconsciousness']
