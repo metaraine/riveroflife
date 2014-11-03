@@ -23,7 +23,7 @@
 
   app.get('/', indexController.index);
 
-  server = app.listen(7800, function() {
+  server = app.listen(process.env.PORT || 7800, function() {
     return console.log('Express server listening on port ' + server.address().port);
   });
 
